@@ -25,7 +25,6 @@ thal = st.selectbox("Thalassemia", ["3", "6", "7"])
 
 
 if st.button("Predict"):
-    # Map UI inputs to the numeric feature names expected by the model
     restecg_map = {"Normal": 0, "ST": 1, "LVH": 2}
 
     raw_input = {
@@ -46,14 +45,12 @@ if st.button("Predict"):
 
     input_df = pd.DataFrame([raw_input])
 
-    # Ensure all expected columns are present (missing ones -> 0) and order matches
     for col in expected_columns:
         if col not in input_df.columns:
             input_df[col] = 0
 
     input_df = input_df[expected_columns]
 
-    # Scale and predict
     try:
         scaled_input = scaler.transform(input_df)
         prediction = model.predict(scaled_input)[0]
