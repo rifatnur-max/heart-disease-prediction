@@ -25,7 +25,7 @@ thal = st.selectbox("Thalassemia", ["3", "6", "7"])
 
 
 if st.button("Predict"):
-    # Map UI inputs to the numeric feature names expected by the model
+    
     restecg_map = {"Normal": 0, "ST": 1, "LVH": 2}
 
     raw_input = {
